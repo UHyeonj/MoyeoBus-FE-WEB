@@ -1,3 +1,10 @@
 @import 'tailwindcss/theme' layer(theme);
 @import 'tailwindcss/preflight' layer(base);
 @import 'tailwindcss/utilities' layer(utilities);
+
+/* 전역 폰트 설정 */
+@layer base {
+  body {
+    font-family: 'Pretendard', sans-serif;
+  }
+}
