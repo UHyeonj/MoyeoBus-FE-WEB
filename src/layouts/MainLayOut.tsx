@@ -1,0 +1,27 @@
+import type { ReactNode } from 'react';
+import { useAtom } from 'jotai';
+import { userRoleAtom } from '../atoms/sideBarAtoms';
+import LocalSideBar from '../components/sidebars/LocalSideBar';
+import CompanySidebar from '../components/sidebars/CompanySIdeBar';
+
+interface MainLayoutProps {
+  children: ReactNode;
+}
+
+const MainLayout = ({ children }: MainLayoutProps) => {
+  const [userRole] = useAtom(userRoleAtom);
+
+  if (!userRole) {
+    return <div>로딩 중...</div>;
+  }
+
+  return (
+    <div className="flex p-4 h-screen bg-[#D9D9D9]">
+      {userRole === 'local' ? <LocalSideBar /> : <CompanySidebar />}
+      <section className="px-6 py-8 bg-white flex-1 rounded-[20px]">
+        {children}
+      </section>
+    </div>
+  );
+};
+export default MainLayout;

@@ -1,10 +1,21 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Outlet } from 'react-router';
+import MainLayout from '../layouts/MainLayOut';
 import Home from '../pages/Home';
 
 const routes = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: (
+      <MainLayout>
+        <Outlet />
+      </MainLayout>
+    ),
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+    ],
   },
 ]);
 
