@@ -16,14 +16,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   }
 
   return (
-    <div
-      className="flex p-4 h-screen bg-primary-lighter"
-      style={{
-        maxWidth: '100vw',
-      }}
-    >
+    <div className="flex p-4 h-screen bg-primary-lighter min-w-0 overflow-hidden">
       {userRole === 'local' ? <LocalSideBar /> : <OperatorSidebar />}
-      <section className="px-6 py-8 bg-white w-full flex-1 rounded-[20px]">
+      <section className="px-6 py-8 bg-white flex-1 min-w-0 rounded-[20px] overflow-x-auto overflow-y-hidden">
         {children}
       </section>
     </div>

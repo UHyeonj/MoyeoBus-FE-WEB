@@ -11,7 +11,7 @@ const LocalPassenger = () => {
   const local = '진안군';
   return (
     <div
-      className="overflow-y-scroll h-full min-w-180  flex flex-col"
+      className="overflow-y-scroll h-full w-full min-w-180 flex flex-col"
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none',

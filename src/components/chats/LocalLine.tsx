@@ -44,24 +44,24 @@ const LocalLine = () => {
   };
 
   return (
-    <div className="h-full flex flex-col items-start p-4">
-      <section className="flex w-full justify-between">
+    <div className="h-full w-full min-w-0 flex flex-col items-start p-4">
+      <section className="flex w-full min-w-0 justify-between items-center gap-2 mb-2">
         <SubTitle subTitle="시간대별 분석(명)" />
         <input
           type="date"
           value={yearMonthDay}
           onChange={e => handleMonthChange(e.target.value)}
-          className="h-[5px] border border-gray-300 rounded-md p-2.5 text-grayscale "
+          className="border h-[5px] border-gray-300 rounded-md p-2.5 text-grayscale "
         />
       </section>
       <div
-        className="overflow-x-scroll w-full h-full"
+        className="overflow-x-auto overflow-y-hidden w-full flex-1 min-w-0 min-h-0"
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
         }}
       >
-        <div className="w-220 h-full">
+        <div className="min-w-[1000px] h-full">
           <ResponsiveLine
             data={data}
             margin={{ top: 30, right: 10, bottom: 50, left: 30 }}
