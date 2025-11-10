@@ -51,7 +51,7 @@ const LocalLine = () => {
           type="date"
           value={yearMonthDay}
           onChange={e => handleMonthChange(e.target.value)}
-          className="h-[5px] border border-gray-300 rounded-md p-2.5 text-grayscale"
+          className="h-[5px] border border-gray-300 rounded-md p-2.5 text-grayscale "
         />
       </section>
       <div

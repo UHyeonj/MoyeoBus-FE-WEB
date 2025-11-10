@@ -11,11 +11,10 @@ const LocalPassenger = () => {
   const local = '진안군';
   return (
     <div
-      className="overflow-y-scroll h-full min-w-150 flex flex-col"
+      className="overflow-y-scroll h-full min-w-180  flex flex-col"
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none',
-        maxWidth: '100vw',
       }}
     >
       <MainTitle title="이용객 현황" />
@@ -23,10 +22,10 @@ const LocalPassenger = () => {
       <section className="mt-9">
         <MainTitle title={local + ' 이용 현황'} />
         <section className="w-full min-w-20 h-90 rounded-[10px] border border-gray-300 mt-2 flex justify-center items-center gap-25">
-          <div className="w-90 h-90">
+          <div className="max-w-90 w-90 h-90">
             <LocalPie />
           </div>
-          <div className="w-40 h-90">
+          <div className="max-w-40 w-40 h-90">
             <LocalPieLegend />
           </div>
         </section>
