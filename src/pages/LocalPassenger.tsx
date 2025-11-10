@@ -5,15 +5,17 @@ import LocalPieLegend from '../components/localmains/LocalPieLegend';
 import MainSmallLayout from '../layouts/MainSmalllLayOut';
 import SmallChartContainer from '../components/chartcontainers/SmallCartContainer';
 import LocalTimeCalendar from '../components/chats/LocalTimeCalendar';
+import LocalLine from '../components/chats/LocalLine';
 
 const LocalPassenger = () => {
   const local = '진안군';
   return (
     <div
-      className="overflow-y-scroll h-full"
+      className="overflow-y-scroll h-full min-w-150 flex flex-col"
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none',
+        maxWidth: '100vw',
       }}
     >
       <MainTitle title="이용객 현황" />
@@ -36,7 +38,7 @@ const LocalPassenger = () => {
             <LocalTimeCalendar />
           </SmallChartContainer>
           <SmallChartContainer>
-            <LocalPie />
+            <LocalLine />
           </SmallChartContainer>
         </MainSmallLayout>
       </section>
