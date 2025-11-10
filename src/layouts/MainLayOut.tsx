@@ -16,9 +16,12 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   }
 
   return (
-    <div className="flex p-4 h-screen bg-primary-lighter">
+    <div className="flex p-4 h-screen bg-primary-lighter min-w-0 overflow-hidden">
       {userRole === 'local' ? <LocalSideBar /> : <OperatorSidebar />}
-      <section className="px-6 py-8 bg-white flex-1 rounded-[20px]">
+      <section
+        className="px-6 py-8 bg-white flex-1 min-w-0 rounded-[20px] overflow-scroll"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
         {children}
       </section>
     </div>
