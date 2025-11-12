@@ -5,6 +5,8 @@ import DropDownSelect from '../components/localmains/DropDownSelect';
 import RouteUseState from '../components/localmains/RouteUseState';
 import BigChartContainer from '../components/chartcontainers/BigChartContainer';
 import BarChart from '../components/charts/BarChart';
+import SmallChartContainer from '../components/chartcontainers/SmallChartContainer';
+import MainSmallLayout from '../layouts/MainSmalllLayOut';
 
 const routeName = '107번';
 
@@ -41,8 +43,21 @@ const RouteStatus = () => {
           <BarChart />
         </BigChartContainer>
       </section>
+      <MainSmallLayout>
+        <SmallChartContainer>
+          <div className="mb-2.5">
+            <MainTitle title="시간대별 승객 수" />
+          </div>
+          <BarChart />
+        </SmallChartContainer>
+        <SmallChartContainer>
+          <div className="mb-2.5">
+            <MainTitle title="요일별 승객 수" />
+          </div>
+        </SmallChartContainer>
+      </MainSmallLayout>
     </div>
   );
 };
-
+//바차트에 사이즈를 받아서 크기 조절이 필요함
 export default RouteStatus;
