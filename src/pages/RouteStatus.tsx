@@ -1,3 +1,5 @@
+import { useAtom } from 'jotai';
+import { barChartData, graphOptions } from '../atoms/localAtoms';
 import MainTitle from '../components/maintexts/MainTitle';
 import SubTitle from '../components/maintexts/SubTitle';
 import DownLoadBtn from '../components/localmains/DownLoadBtn';
@@ -5,12 +7,13 @@ import DropDownSelect from '../components/localmains/DropDownSelect';
 import RouteUseState from '../components/localmains/RouteUseState';
 import BigChartContainer from '../components/chartcontainers/BigChartContainer';
 import BarChart from '../components/charts/BarChart';
-import SmallChartContainer from '../components/chartcontainers/SmallChartContainer';
-import MainSmallLayout from '../layouts/MainSmalllLayOut';
 
 const routeName = '107번';
 
 const RouteStatus = () => {
+  const [barData] = useAtom(barChartData);
+  const [isGraphOptions, setIsGraphOptions] = useAtom(graphOptions);
+
   return (
     <div
       className="overflow-y-scroll w-full min-w-180 flex flex-col"
@@ -24,38 +27,33 @@ const RouteStatus = () => {
       <section className="mt-9 mb-2.5 flex justify-between items-center">
         <MainTitle title="노선별 이용 통계" />
         <div className="flex gap-2.5">
-          <DownLoadBtn name="svg 파일 다운로드" />
-          <DownLoadBtn name="xlsx 파일 다운로드" />
+          <DownLoadBtn name="csv" />
+          <DownLoadBtn name="xlsx" />
           <span className="ml-2.5">
             <DropDownSelect />
           </span>
         </div>
       </section>
       <RouteUseState />
-      <section className="mt-7.5">
-        <div className="mb-2.5">
-          <MainTitle title="도착지 빈도 분석" />
-        </div>
-        <BigChartContainer>
-          <div className="mb-10">
-            <SubTitle subTitle={`${routeName} 노선`} />
-          </div>
-          <BarChart />
-        </BigChartContainer>
-      </section>
-      <MainSmallLayout>
-        <SmallChartContainer>
+      {isGraphOptions && (
+        <section className="mt-7.5">
           <div className="mb-2.5">
-            <MainTitle title="시간대별 승객 수" />
+            <MainTitle title="도착지 빈도 분석" />
           </div>
-          <BarChart />
-        </SmallChartContainer>
-        <SmallChartContainer>
-          <div className="mb-2.5">
-            <MainTitle title="요일별 승객 수" />
-          </div>
-        </SmallChartContainer>
-      </MainSmallLayout>
+          <BigChartContainer>
+            <div className="mb-10 flex justify-between items-center">
+              <SubTitle subTitle={`${routeName} 노선`} />
+              <button
+                className="typo-table text-grayscale hover:cursor-pointer"
+                onClick={() => setIsGraphOptions(false)}
+              >
+                닫기
+              </button>
+            </div>
+            <BarChart data={barData} size="large" />
+          </BigChartContainer>
+        </section>
+      )}
     </div>
   );
 };
