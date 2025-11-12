@@ -6,6 +6,10 @@ import PassengerStatus from '../pages/PassengerStatus';
 import RouteStatus from '../pages/RouteStatus';
 import Home from '../pages/Home';
 
+//operator pages
+import DataAnalysis from '../pages/DataAnalysis';
+import OperationManagement from '../pages/OperationManagement';
+
 const routes = createBrowserRouter([
   {
     path: '/',
@@ -30,6 +34,28 @@ const routes = createBrowserRouter([
       {
         path: 'routeStatus',
         element: <RouteStatus />,
+      },
+    ],
+  },
+  {
+    path: 'operator',
+    element: (
+      <MainLayout>
+        <Outlet />
+      </MainLayout>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DataAnalysis />,
+      },
+      {
+        path: 'dataAnalysis',
+        element: <DataAnalysis />,
+      },
+      {
+        path: 'operationManagement',
+        element: <OperationManagement />,
       },
     ],
   },
