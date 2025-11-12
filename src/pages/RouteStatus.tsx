@@ -1,4 +1,6 @@
 import { useAtom } from 'jotai';
+import { useEffect } from 'react';
+import { activeLocalSidebarAtom } from '../atoms/sideBarAtoms';
 import { barChartData, graphOptions } from '../atoms/localAtoms';
 import MainTitle from '../components/maintexts/MainTitle';
 import SubTitle from '../components/maintexts/SubTitle';
@@ -13,6 +15,11 @@ const routeName = '107번';
 const RouteStatus = () => {
   const [barData] = useAtom(barChartData);
   const [isGraphOptions, setIsGraphOptions] = useAtom(graphOptions);
+
+  const [, setActiveLocal] = useAtom(activeLocalSidebarAtom);
+  useEffect(() => {
+    setActiveLocal('노선 현황');
+  }, [setActiveLocal]);
 
   return (
     <div
