@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useAtom } from 'jotai';
+import { pointedLocation } from '../atoms/operatorAtoms';
 
 interface Stop {
   id: number;
   name: string;
   time: string;
-  status: '출발' | '예정' | '종점';
+  status: '출발' | '예정' | '종점' | '지남' | '현재' | '종료';
+  latlng: { lat: number; lng: number };
 }
 
 interface BusRouteCardProps {
@@ -16,6 +19,21 @@ interface BusRouteCardProps {
 
 const PathInfo = ({ line, driver, stops }: BusRouteCardProps) => {
   const [selectedStopId, setSelectedStopId] = useState<number | null>(null);
+
+  const [, setPointed] = useAtom(pointedLocation);
+
+  // 초기 현재 정류장 설정
+  useEffect(() => {
+    const currentStop = stops.find(stop => stop.status === '현재');
+    if (currentStop && selectedStopId === null) {
+      setSelectedStopId(currentStop.id);
+      setPointed({ lat: currentStop.latlng.lat, lng: currentStop.latlng.lng });
+    } else if (!currentStop && stops.length > 0 && selectedStopId === null) {
+      // '현재' 상태의 정류장이 없으면 첫 번째 정류장으로 설정
+      setSelectedStopId(stops[0].id);
+      setPointed({ lat: stops[0].latlng.lat, lng: stops[0].latlng.lng });
+    }
+  }, [stops, selectedStopId, setPointed]);
 
   return (
     <div className="w-60 h-full bg-white rounded-xl border border-gray-200  flex flex-col min-h-0">
@@ -40,7 +58,10 @@ const PathInfo = ({ line, driver, stops }: BusRouteCardProps) => {
           return (
             <div
               key={stop.id}
-              onClick={() => setSelectedStopId(stop.id)}
+              onClick={() => {
+                setSelectedStopId(stop.id);
+                setPointed({ lat: stop.latlng.lat, lng: stop.latlng.lng });
+              }}
               className={`relative flex items-start h-16 w-full px-2 py-2 cursor-pointer transition-colors rounded-[10px] ${
                 isSelected ? 'bg-primary ' : 'hover:bg-gray-50 '
               }`}
