@@ -1,9 +1,9 @@
 import { Map, Polyline, MapMarker } from 'react-kakao-maps-sdk';
 import { useAtom } from 'jotai';
-import { pointedLocation } from '../atoms/operatorAtoms';
+import { pointedLocation } from '../../atoms/operatorAtoms';
 import useKakaoLoader from './useKaKaoLoader';
-import busImage from '../assets/map/bus.svg';
-import ping from '../assets/map/ping.svg';
+import busImage from '../../assets/map/bus.svg';
+import ping from '../../assets/map/ping.svg';
 
 type StaticMapProps = {
   title: string;
