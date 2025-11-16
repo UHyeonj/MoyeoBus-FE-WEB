@@ -1,5 +1,5 @@
-import MiniTextContainer from '../components/containers/MiniTextContainer';
-import MiniTextsLayOut from '../layouts/MiniTextsLayOut';
+import MiniTextContainer from '../containers/MiniTextContainer';
+import MiniTextsLayOut from '../../layouts/MiniTextsLayOut';
 import PathInfo from './PathInfo';
 import StaticMap from './StaticMap';
 

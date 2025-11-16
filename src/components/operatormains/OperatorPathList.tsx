@@ -1,7 +1,7 @@
-import { pathData } from '../mokdata';
-import MiniTextsLayOut from '../layouts/MiniTextsLayOut';
-import MiniTextContainer from '../components/containers/MiniTextContainer';
-import MainTitle from '../components/maintexts/MainTitle';
+import { pathData } from '../../mokdata';
+import MiniTextsLayOut from '../../layouts/MiniTextsLayOut';
+import MiniTextContainer from '../containers/MiniTextContainer';
+import MainTitle from '../maintexts/MainTitle';
 import PathListTable from './PathListTable';
 
 const OperatorPathList = () => {

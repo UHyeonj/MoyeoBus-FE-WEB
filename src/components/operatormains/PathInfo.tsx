@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
-import { pointedLocation } from '../atoms/operatorAtoms';
+import { pointedLocation } from '../../atoms/operatorAtoms';
 
 interface Stop {
   id: number;
