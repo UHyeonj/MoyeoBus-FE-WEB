@@ -112,7 +112,7 @@ const DataAnalysis = () => {
             <BarChart
               data={
                 routeDistanceData?.map(item => ({
-                  name: item.routeNo.toString(),
+                  name: item.routeNo.toString() + '번',
                   value: item.distance,
                 })) || []
               }
