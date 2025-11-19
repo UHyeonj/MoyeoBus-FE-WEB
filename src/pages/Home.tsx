@@ -135,7 +135,7 @@ const Home = () => {
         {/* 지자체 버튼 */}
         <button
           style={{ gridArea: 'local' }}
-          className="bg-white border-2 border-[#007CFF] rounded-2xl p-4 flex flex-col justify-center items-start text-left hover:bg-gray-50 transition duration-300"
+          className="bg-white border-2 border-[#007CFF] rounded-2xl p-4 flex flex-col justify-center items-start text-left hover:bg-gray-50 transition duration-300 hover:cursor-pointer"
           onClick={() => {
             navigate('/local');
             setRole('local');
@@ -152,13 +152,13 @@ const Home = () => {
         {/* 운수사 버튼 */}
         <button
           style={{ gridArea: 'operator' }}
-          className="bg-white border-2 border-[#007CFF] rounded-2xl p-4 flex flex-col justify-center items-start text-left hover:bg-gray-50 transition duration-300"
+          className="bg-white border-2 border-[#007CFF] rounded-2xl p-4 flex flex-col justify-center items-start text-left hover:bg-gray-50 transition duration-300 hover:cursor-pointer"
           onClick={() => {
             navigate('/operator');
             setRole('operator');
           }}
         >
-          <div className="typo-h3 font-bold text-gray-800 flex items-center">
+          <div className="typo-h3 font-bold text-gray-800 flex items-center ">
             운수사 바로가기
           </div>
           <div className="typo-caption mt-1 text-gray-500">

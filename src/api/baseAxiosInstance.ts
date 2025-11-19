@@ -16,6 +16,7 @@ baseAxiosInstance.interceptors.response.use(
     // 네트워크 오류 처리 응답이 없는 경우
     if (!error.response) {
       alert('네트워크 오류가 발생했습니다.');
+      window.location.href = '/';
     }
 
     // 컴포넌트에서도 에러를 처리할 수 있게 보낸다.
